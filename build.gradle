@@ -237,7 +237,7 @@ goBuild {
     // WARNING:  The single quotes are intentional!  The gogradle plugin will
     //           parse the command with the GString engine at execution time.
     go(['build',
-        '-ldflags', "-X main.Version=${packageVersion}" as String,
+        '-ldflags', "-X main.Version=${packageVersion} -X main.GitCommit=${gitCommit} -X main.BuildDate=${buildDate}" as String,
         '-o', './build/${GOOS}-${GOARCH}/'+buildFileName+'${GOEXE}',
         golang.packagePath ] as List<String>)
 }
